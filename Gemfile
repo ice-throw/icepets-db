@@ -53,3 +53,15 @@ end
   
 # Devise
   gem 'devise'
+  
+# Validates URL
+  gem "validate_url"
+  
+# Mechanize 
+  gem 'mechanize'
+  
+# Database Cleaner
+  gem 'database_cleaner'
+  
+# Reset PKs
+  gem 'activerecord-reset-pk-sequence'

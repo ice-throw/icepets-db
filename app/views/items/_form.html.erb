@@ -1,0 +1,21 @@
+<%= simple_form_for(@item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :item_id %>
+    <%= f.input :name %>
+    <%= f.input :image_url %>
+    <%= f.input :category %>
+    <%= f.input :rarity_id %>
+    <%= f.input :value %>
+    <%= f.input :description %>
+    <%= f.input :release_date %>
+    <%= f.input :retirement_date %>
+    <%= f.input :actual_price %>
+    <%= f.input :notes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
