@@ -1,0 +1,15 @@
+<%= simple_form_for(@wishlist) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :privacy, collection: [ "Public", "Unlisted", "Private"] %>
+    <%= f.input :sorting, collection: [ "Alphabetical", "ID Number", "Added", "Custom Order"] %>
+    <%= f.input :item_list, as: :text, hint: "One item on each new line!" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

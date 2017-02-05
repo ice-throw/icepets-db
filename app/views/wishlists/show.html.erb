@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+<div class="container-60">
+  <h1 class="show-title"><%= @wishlist.name %></h1>
+  <!--<p>-->
+  <!--  <strong>Description:</strong>-->
+  <!--</p>-->
+  <p>
+    <%= @wishlist.description %>
+  </p>
+  <br>
+  
+  <!--<p>-->
+  <!--  <strong>Privacy:</strong>-->
+  <!--  <#%= @wishlist.privacy %>-->
+  <!--</p>-->
+  
+  <!--<p>-->
+  <!--  <strong>Sorting:</strong>-->
+  <!--  <#%= @wishlist.sorting %>-->
+  <!--</p>-->
+  
+  <% @wishlist.wishlist_items.each_slice(3) do |item| %>
+    <div class="row">
+      <% item.each do |i| %>
+        <div class="col-md-4 text-center">
+          <p><%= get_image(i.item_id) %></p>
+          <p><%= get_name(i.item_id) %></p>
+          <p><%= i.quantity == 1 ? "" : "x"+i.quantity.to_s %></p>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  
+  <p class="block">
+    <%if can? :update, @wishlist %>
+      <%= link_to 'Edit', edit_wishlist_path(@wishlist) %> |
+      <%= link_to 'Back', wishlists_path %>
+    <% end %>
+  </p>
+</div>
+
+  
+

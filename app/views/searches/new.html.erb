@@ -1,0 +1,40 @@
+<div class="container-60">
+    <h1>Advanced Search</h1>
+    <!--I should made this a partial (;-->
+    <%= simple_form_for :search, url: searches_path do |f| %>
+        <div class="form-inputs">
+          <%= f.input :keywords, as: :string, required: false%>
+          <div class="field">
+           <%= f.label :category, required: false %><br/>
+           <%= f.select :category, options_for_select(@category), {}, { :class => 'form-control' } %> <!--#Dropdowns suck!!-->
+           <br>
+          </div>
+          <!--<div class="row inline-block">-->
+          <!--  <div class="inline-block">-->
+          <!--    <input id="search-rarity-min" name="min_rarity" type="text" value="">-->
+          <!--  </div>-->
+          <!--  <div class="inline-block">-->
+          <!--    <span class="middlefix">to</span>-->
+          <!--  </div>-->
+          <!--  <div class="inline-block">-->
+          <!--    <input id="search-rarity-max" name="max_rarity" type="text" value="">-->
+          <!--  </div>-->
+          <!--</div>-->
+          <%= f.input :rarity, as: :integer, required: false %>
+          <%= f.input :freezable, as: :boolean, required: false%>
+          <%= f.input :openable, as: :boolean %>
+          <%= f.input :min_value, as: :integer, required: false %>
+          <%= f.input :max_value, as: :integer, required: false %>
+          <%= f.input :description_keywords, as: :string, hint: "(comma separated) [not really but someday]", required: false %>
+          <%= f.input :min_release_date, as: :date, include_blank: true, required: false, :start_year => 2009, :end_year => Time.now.to_date.year %>
+          <%= f.input :max_release_date, as: :date, include_blank: true, required: false, :start_year => 2009, :end_year => Time.now.to_date.year %>
+          <%= f.input :min_price, as: :integer, required: false %>
+          <%= f.input :max_price, as: :integer, required: false %>
+        </div>
+        
+        <div class="form-actions">
+          <%= f.button :submit, "Search" %>
+        </div>
+        <br>
+    <% end %>
+</div>

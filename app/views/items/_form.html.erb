@@ -9,8 +9,8 @@
     <%= f.input :rarity_id %>
     <%= f.input :value %>
     <%= f.input :description %>
-    <%= f.input :release_date %>
-    <%= f.input :retirement_date %>
+    <%= f.input :release_date, include_blank: true, :start_year => 2009, :end_year => Time.now.to_date.year  %>
+    <%= f.input :retirement_date, include_blank: true, :start_year => 2009, :end_year => Time.now.to_date.year %>
     <%= f.input :actual_price %>
     <%= f.input :notes %>
   </div>

@@ -15,7 +15,7 @@ module ItemsHelper
         elsif item.retirement_date == "2000-1-1".to_date && item.rarity_id == 7
             "Unknown"
         else
-            return item.retirement_date
+            return item.retirement_date.to_formatted_s(:long)       
         end
     end
     

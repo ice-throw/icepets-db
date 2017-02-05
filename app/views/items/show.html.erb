@@ -1,59 +1,92 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Id:</strong>
-  <%= @item.item_id %>
-</p>
+<div class="container-60">
+  <p>
+    <h1 class="show-title"><%= @item.name %></h1>
+  
+    <!--<div clas="inline">-->
+    <!--  <#%= @item.description %>-->
+    <!--</div>-->
+    
+    <table class="table">
+      <tbody>
+          <tr>
+            <td><%= image_tag @item.image_url %></td>
+            <td style="vertical-align: middle"><%= @item.description %></td>
+          </tr>
+      </tbody>
+    </table>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Rarity</th>
+          <th>Value</th>
+          <!--<th>Actual price</th>-->
+          <!--<th>Notes</th>-->
+        </tr>
+      </thead>
+    
+      <tbody>
+          <tr>
+            <td><%= @item.category %></td>
+            <td><%= check_rarity(@item) %></td>
+            <td><%= @item.value %></td>
+            <!--<td><#%= @item.actual_price %></td>-->
+          </tr>
+      </tbody>
+    </table>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Release date</th>
+          <th>Retirement date</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+          <tr>
+            <td><%= @item.release_date == nil ? @item.release_date : @item.release_date.to_formatted_s(:long) %></td>
+            <td><%= check_retirement_date(@item) %></td>
+          </tr>
+      </tbody>
+    </table>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Freezable</th>
+          <th>Openable</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+          <tr>
+            <td><%= @item.freezable == true ? "Yes" : "No" %></td>
+            <td><%= @item.openable == true ? "Yes" : "No" %></td>
+          </tr>
+      </tbody>
+    </table>
+    
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Notes</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+          <tr>
+            <td><%= @item.notes %></td>
+          </tr>
+      </tbody>
+    </table>
+    <%= link_to 'Edit', edit_item_path(@item) %> |
+    <%= link_to "Back", :back %>
+  </div>
+  
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
 
-<p>
-  <strong>Image url:</strong>
-  <%= image_tag @item.image_url %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @item.category %>
-</p>
-
-<p>
-  <strong>Rarity:</strong>
-  <%= @item.rarity_id %>
-</p>
-
-<p>
-  <strong>Value:</strong>
-  <%= @item.value %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
-
-<p>
-  <strong>Release date:</strong>
-  <%= @item.release_date %>
-</p>
-
-<p>
-  <strong>Retirement date:</strong>
-  <%= @item.retirement_date %>
-</p>
-
-<p>
-  <strong>Actual price:</strong>
-  <%= @item.actual_price %>
-</p>
-
-<p>
-  <strong>Notes:</strong>
-  <%= @item.notes %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>

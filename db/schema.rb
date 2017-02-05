@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170124042143) do
+ActiveRecord::Schema.define(version: 20170203222954) do
 
   create_table "items", force: :cascade do |t|
     t.integer  "item_id",         null: false
@@ -27,12 +27,36 @@ ActiveRecord::Schema.define(version: 20170124042143) do
     t.text     "notes"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.boolean  "freezable"
+    t.boolean  "openable"
+    t.boolean  "released"
+    t.integer  "icecash_value"
+    t.integer  "stocks"
+    t.string   "quest_request"
+    t.string   "quest_prize"
   end
 
   create_table "rarities", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "searches", force: :cascade do |t|
+    t.string   "keywords"
+    t.string   "category"
+    t.integer  "rarity"
+    t.integer  "min_value"
+    t.integer  "max_value"
+    t.text     "description_keywords"
+    t.date     "min_release_date"
+    t.date     "max_release_date"
+    t.integer  "min_price"
+    t.integer  "max_price"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.boolean  "freezable"
+    t.boolean  "openable"
   end
 
   create_table "users", force: :cascade do |t|
@@ -48,9 +72,31 @@ ActiveRecord::Schema.define(version: 20170124042143) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "wishlist_items", force: :cascade do |t|
+    t.integer  "wishlist_id"
+    t.integer  "item_id"
+    t.integer  "quantity"
+    t.integer  "position"
+    t.boolean  "top_priority"
+    t.boolean  "obtained"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "wishlists", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "privacy"
+    t.string   "sorting"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
 end

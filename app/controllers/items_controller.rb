@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!, only: [:edit, :update, :destroy]
   # GET /items
   # GET /items.json
   def index
@@ -73,6 +73,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item_id, :name, :image_url, :category, :rarity_id, :value, :description, :release_date, :retirement_date, :actual_price, :notes)
+      params.require(:item).permit(:item_id, :name, :image_url, :category, :rarity_id, :value, :description, :release_date, :retirement_date, :actual_price, :notes, :freezable, :openable, :released, :icecash_value, :quest_request, :quest_prize)
     end
 end

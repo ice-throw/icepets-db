@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  wishlist_id: 1
+  item_id: 1
+  quantity: 1
+  position: 1
+  top_priority: false
+  obtained: false
+
+two:
+  wishlist_id: 1
+  item_id: 1
+  quantity: 1
+  position: 1
+  top_priority: false
+  obtained: false

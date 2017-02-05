@@ -65,3 +65,9 @@ end
   
 # Reset PKs
   gem 'activerecord-reset-pk-sequence'
+  
+# CanCan 
+  gem 'cancancan'
+  
+# Environment variables
+  gem 'dotenv-rails'
